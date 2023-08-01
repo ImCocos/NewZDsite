@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    {% load static %}
+</head>
+<body>
+
+<b>Станция "{{st.name}}":</b><br>
+-Количество человек: <text id="people"></text><br>
+-Рециркуляторы:<br>
+--Рециркулятор:<br>
+---ID: <text id="r1-pk"></text><br>
+---Мощность: <text id="r1-power"></text>%<br>
+--Рециркулятор:<br>
+---ID: <text id="r2-pk"></text><br>
+---Мощность: <text id="r2-power"></text>%<br>
+--Рециркулятор:<br>
+---ID: <text id="r3-pk"></text><br>
+---Мощность: <text id="r3-power"></text>%<br>
+--Рециркулятор:<br>
+---ID: <text id="r4-pk"></text><br>
+---Мощность: <text id="r4-power"></text>%<br>
+--Рециркулятор:<br>
+---ID: <text id="r5-pk"></text><br>
+---Мощность: <text id="r5-power"></text>%<br>
+
+
+{% block jss %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    function get(){
+        $.ajax({
+            data: $(this).serialize(),
+            url: "/data-sender/{{st.pk}}",
+            success: function(response) {
+                var data = response.data;
+
+                var people = data['people'];
+                document.getElementById('people').innerText = people;
+
+                var recirculers = data['recirculers'];
+                var r1 = recirculers[0];
+                var r2 = recirculers[1];
+                var r3 = recirculers[2];
+                var r4 = recirculers[3];
+                var r5 = recirculers[4];
+
+                document.getElementById('r1-pk').innerText = r1['id'];
+                document.getElementById('r1-power').innerText = r1['power'];
+                document.getElementById('r2-pk').innerText = r2['id'];
+                document.getElementById('r2-power').innerText = r2['power'];
+                document.getElementById('r3-pk').innerText = r3['id'];
+                document.getElementById('r3-power').innerText = r3['power'];
+                document.getElementById('r4-pk').innerText = r4['id'];
+                document.getElementById('r4-power').innerText = r4['power'];
+                document.getElementById('r5-pk').innerText = r5['id'];
+                document.getElementById('r5-power').innerText = r5['power'];
+
+            },
+            error: function(response) {
+                console.log(response.responseJSON.errors)
+            }
+        });
+        return false;
+    };
+    setInterval(get, 1000);
+</script>
+{% endblock jss %}
+
+
+</body>
+</html>

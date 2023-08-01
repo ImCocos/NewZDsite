@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    {% load static %}
+</head>
+<body>
+<b>Покупка билета:</b>
+<br>
+<form method="post">
+    {% csrf_token %}
+    Выберите станцию отправления:
+    <select name="stations-from[]">
+        {% for s in stations %}
+        <option value="{{s.0}}">{{s.1}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    Выберите станцию назначения:
+    <select name="stations-to[]">
+        {% for s in stations %}
+        <option value="{{s.0}}">{{s.1}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <button type="submit" name="submit" value="buy-ticket">Купить</button>
+</form>
+
+</body>
+</html>
