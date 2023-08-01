@@ -1,9 +1,31 @@
+import datetime
+import multiprocessing
+import time
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import Http404, HttpResponse, JsonResponse
+from multiprocessing import Process
 import json
+import os
+from threading import Thread
 
 from .models import StationStats, Ticket
+
+
+def delete_tickets():
+    while True:
+        if datetime.datetime.now().second % 30 == 0: 
+            time = datetime.datetime.now()
+            ts = Ticket.objects.filter(timestamp__lte=time)
+            for t in ts:
+                s = get_object_or_404(StationStats, pk=t.st_to)
+                s.tickets.remove(t)
+                s.people = s.people - 1
+                s.save()
+                t.delete()
+
+t1 = Thread(target=delete_tickets)
+t1.start()
 
 
 def index(request):
