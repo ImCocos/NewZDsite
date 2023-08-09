@@ -15,8 +15,8 @@ from .models import StationStats, Ticket
 def delete_tickets():
     while True:
         if datetime.datetime.now().second % 30 == 0: 
-            time = datetime.datetime.now()
-            ts = Ticket.objects.filter(timestamp__lte=time)
+            cur_time = datetime.datetime.now()
+            ts = Ticket.objects.filter(timestamp__lte=cur_time)
             for t in ts:
                 s = get_object_or_404(StationStats, pk=t.st_to)
                 s.tickets.remove(t)
