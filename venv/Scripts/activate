@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\ImCocos\Documents\Director\Git_projects\NewZDsite\venv"
+VIRTUAL_ENV="C:\Users\versh\OneDrive\Рабочий стол\bo\big_olimp\new\python\NewZDsite\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
