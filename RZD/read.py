@@ -6,7 +6,7 @@ import time
 
 while True:
   try:
-    ser = serial.Serial('COM6', 9600, timeout=0)
+    ser = serial.Serial('COM4', 9600, timeout=0)
     break
   except:
     pass
