@@ -8,7 +8,7 @@ from multiprocessing import Process
 import json
 import os
 from threading import Thread
-
+# from read import read
 from .models import StationStats, Ticket
 
 
@@ -26,6 +26,11 @@ def delete_tickets():
 
 t1 = Thread(target=delete_tickets)
 t1.start()
+
+
+
+# t2 = Thread(target=read)
+# t2.start()
 
 
 def index(request):
@@ -90,8 +95,12 @@ def data_getter(request, station_pk):
         try:
             if data['key'] == key:
                 print(data)
+                # st = get_object_or_404(StationStats, pk=station_pk)
+                # st.people += int(data['input']) - int(data['output'])
+                # st.save()
+
                 st = get_object_or_404(StationStats, pk=station_pk)
-                st.people += int(data['input']) - int(data['output'])
+                st.people = int(data['data'].replace('\\r', '').replace('\\n', '').replace("'", ''))
                 st.save()
 
         except KeyError:
