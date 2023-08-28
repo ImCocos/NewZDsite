@@ -24,6 +24,10 @@ def delete_tickets():
                 s.save()
                 t.delete()
 
+                r = s.recirculers.all()[0]
+                r.power = round(s.people / 137, 3)
+                r.save()
+
 t1 = Thread(target=delete_tickets)
 t1.start()
 
@@ -79,6 +83,10 @@ def buy_ticket(request):
                 st_to.people += 1
                 st_to.save()
 
+                r = st_to.recirculers.all()[0]
+                r.power = round(st_to.people / 137, 3)
+                r.save()
+
                 return redirect('home')
 
     return render(request, template_name='buy-ticket.html', context=context)
@@ -102,6 +110,9 @@ def data_getter(request, station_pk):
                 st = get_object_or_404(StationStats, pk=station_pk)
                 st.people = int(data['data'].replace('\\r', '').replace('\\n', '').replace("'", ''))
                 st.save()
+                r = st_to.recirculers.all()[0]
+                r.power = round(st_to.people / 137, 3)
+                r.save()
 
         except KeyError:
             pass
@@ -110,6 +121,9 @@ def data_getter(request, station_pk):
 
 def data_sender(request, station_pk):
     st = get_object_or_404(StationStats, pk=station_pk)
+    # r = st.recirculers.all()[0]
+    # r.power = round(st.people / 137, 3)
+    # r.save()
     data = {
         'people': st.people,
         'recirculers': [
@@ -120,7 +134,6 @@ def data_sender(request, station_pk):
                 for r in st.recirculers.all()
         ],
     }
-
     response = {
         'data': data
     }

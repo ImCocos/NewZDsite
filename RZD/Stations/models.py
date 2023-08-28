@@ -10,7 +10,7 @@ class Ticket(models.Model):
 
 
 class Recirculer(models.Model):
-    power = models.IntegerField(default=0)
+    power = models.FloatField(default=float(0))
 
 
 class StationStats(models.Model):
