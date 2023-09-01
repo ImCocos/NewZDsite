@@ -5,25 +5,29 @@
     <title>{{title}}</title>
     {% load static %}
 </head>
-<body>
-<b>Покупка билета:</b>
-<br>
+<body style='
+    background-image: url("{% static 'buy.jpg' %}")
+'>
 <form method="post">
     {% csrf_token %}
-    Выберите станцию отправления:
-    <select name="stations-from[]">
+    <select name="stations-from[]" style="
+    position: static;
+    margin-left: 995px;
+    margin-top: 348px;
+    ">
         {% for s in stations %}
         <option value="{{s.0}}">{{s.1}}</option>
         {% endfor %}
     </select>
-    <br>
-    Выберите станцию назначения:
-    <select name="stations-to[]">
+    <select name="stations-to[]" style="
+    position: static;
+    margin-left: 995px;
+    margin-top: 220px;
+    ">
         {% for s in stations %}
         <option value="{{s.0}}">{{s.1}}</option>
         {% endfor %}
     </select>
-    <br>
     <button type="submit" name="submit" value="buy-ticket">Купить</button>
 </form>
 
