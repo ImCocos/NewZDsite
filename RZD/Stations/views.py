@@ -24,9 +24,7 @@ def delete_tickets():
                 s.save()
                 t.delete()
 
-                r = s.recirculers.all()[0]
-                r.power = round(s.people / 137, 3)
-                r.save()
+                s.set_power()
 
 t1 = Thread(target=delete_tickets)
 t1.start()
@@ -83,9 +81,7 @@ def buy_ticket(request):
                 st_to.people += 1
                 st_to.save()
 
-                r = st_to.recirculers.all()[0]
-                r.power = round(st_to.people / 137, 3)
-                r.save()
+                st_to.set_power()
 
                 return redirect('home')
 
@@ -103,27 +99,33 @@ def data_getter(request, station_pk):
         try:
             if data['key'] == key:
                 print(data)
-                # st = get_object_or_404(StationStats, pk=station_pk)
-                # st.people += int(data['input']) - int(data['output'])
-                # st.save()
-
+                cmd = data['data'].split(':')[0]
                 st = get_object_or_404(StationStats, pk=station_pk)
-                st.people = int(data['data'].replace('\\r', '').replace('\\n', '').replace("'", ''))
-                st.save()
-                r = st_to.recirculers.all()[0]
-                r.power = round(st_to.people / 137, 3)
-                r.save()
+                if cmd == 'ps':
+                    number = data['data'].split(':')[1]
+                    st.people = int(number)
+                    st.save()
+                    st.set_power()
+                elif cmd == 'sys':
+                    mode = data['data'].split(':')[1]
+                    st.emergency = True if mode == 'True' else False
+                    st.save()
+                    st.set_power()
+                elif cmd == 'pw':
+                    power = float(data['data'].split(':')[1])
+                    print(f'!!!!!!!! {cmd}:{power}')
+                    st.set_power(power=power)
+
 
         except KeyError:
             pass
+
         return HttpResponse()
 
 
 def data_sender(request, station_pk):
     st = get_object_or_404(StationStats, pk=station_pk)
-    # r = st.recirculers.all()[0]
-    # r.power = round(st.people / 137, 3)
-    # r.save()
+    
     data = {
         'people': st.people,
         'recirculers': [

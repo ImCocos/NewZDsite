@@ -1,12 +1,14 @@
 import json
 import requests
 
-data = {
-    'key': 'zsrgdragae5hrbzdhnsrtWQA354',
-    'input': '0',
-    'output': '92',
-}
+while True:
+    cmd = input('CMD: ')
+    st_num = int(input('ST_NUM: '))
+    data = {
+        'key': 'zsrgdragae5hrbzdhnsrtWQA354',
+        'data': cmd,
+    }
 
-data = json.dumps(data)
+    data = json.dumps(data)
 
-response = requests.post(url='http://127.0.0.1:8000/data-getter/4', data=data)
+    response = requests.post(url=f'http://127.0.0.1:8000/data-getter/{st_num}', data=data)
