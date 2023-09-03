@@ -1,24 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{title}}</title>
-    {% load static %}
-</head>
-<body>
+{% extends 'base.html' %}
 
-<form method="post">
-    {% csrf_token %}
-    Выберите станцию информацию о которой вы хотите видеть информацию:
-    <select name="stations[]">
-        {% for s in stations %}
-        <option value="{{s.0}}">{{s.1}}</option>
-        {% endfor %}
-    </select>
-    <button type="submit" name="submit" value="show-info">Ок</button>
-</form>
+{% block content %}
+{% load static %}
 
-<a href="buy-ticket">Купить билет</a>
+<div class="buy-form-container">
+    <div class="buy-form">
+        <form method="post" >
+            {% csrf_token %}
+            Выберите станцию информацию о которой вы хотите видеть информацию:
+            <br>
+            <br>
+            <select name="stations[]">
+                {% for s in stations %}
+                <option value="{{s.0}}">{{s.1}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <br>
+            <button type="submit" name="submit" value="show-info">Выбрать</button>
+            <br>
+            <br>
+            <a href="buy-ticket">Купить билет</a>
+        </form>
+    </div>
+</div>
 
-</body>
-</html>
+{% endblock %}

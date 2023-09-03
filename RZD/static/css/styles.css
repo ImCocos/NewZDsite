@@ -1,0 +1,130 @@
+
+html {
+    margin: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.buy-form-container {
+    font-size: 180%;
+    display: flex;
+    height: 80%;
+    width: 90%;
+
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    border-radius: 30px;
+    background-color: rgb(130, 159, 255);
+    box-shadow: 0px 0px 30px black;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.buy-form {
+    font-size: 100%;
+    margin: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10%;
+    text-align: center;
+}
+
+select {
+    font-size: 180%;
+    border-radius: 20px;
+    border: 0px solid black;
+    background-color: rgb(130, 159, 255);
+    margin: auto;  
+    transition: 0.3s;
+    text-align: center;
+}
+
+select:hover {
+    cursor: pointer;
+    color: rgb(230, 230, 230);
+    transition: 0.3s;
+    box-shadow: 0px 0px 30px black;
+    background-color: rgb(70, 110, 238);
+}
+
+button {
+    font-size: 180%;
+    border: none;
+    margin: 0 40%;
+    transition: 0.3s;
+    background-color: rgb(130, 159, 255);
+    border-radius: 20px;
+}
+
+button:hover {
+    cursor: pointer;
+    color: rgb(230, 230, 230);
+    transition: 0.3s;
+    box-shadow: 0px 0px 30px black;
+    background-color: rgb(70, 110, 238);
+}
+
+a {
+    margin: 0;
+    font-size: 180%;
+    border: none;
+    transition: 0.3s;
+    border-radius: 20px;
+    text-decoration: none;
+    color: black;
+    border-radius: 20px;
+}
+
+a:hover {
+    cursor: pointer;
+    color: rgb(230, 230, 230);
+    transition: 0.3s;
+    text-shadow: 0px 0px 30px black;
+}
+
+
+.info-main-block {
+    font-size: 180%;
+    display: flex;
+    height: 80%;
+    width: 90%;
+
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    border-radius: 30px;
+    background-color: rgb(130, 159, 255);
+    box-shadow: 0px 0px 30px black;
+
+    text-align: left;
+
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    width: 90%;
+    font-size: 160%;
+    border: none;
+    transition: 0.3s;
+    background-color: rgb(130, 159, 255);
+    transition: 0.3s;
+}
+
+table:hover {
+    transition: 0.3s;
+    box-shadow: 0px 0px 30px black;
+    background-color: rgb(70, 110, 238);
+}
+
+td {
+    border: 3px solid black;
+}

@@ -1,35 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{title}}</title>
-    {% load static %}
-</head>
-<body style='
-    background-image: url("{% static 'buy.jpg' %}")
-'>
-<form method="post">
-    {% csrf_token %}
-    <select name="stations-from[]" style="
-    position: static;
-    margin-left: 995px;
-    margin-top: 348px;
-    ">
-        {% for s in stations %}
-        <option value="{{s.0}}">{{s.1}}</option>
-        {% endfor %}
-    </select>
-    <select name="stations-to[]" style="
-    position: static;
-    margin-left: 995px;
-    margin-top: 220px;
-    ">
-        {% for s in stations %}
-        <option value="{{s.0}}">{{s.1}}</option>
-        {% endfor %}
-    </select>
-    <button type="submit" name="submit" value="buy-ticket">Купить</button>
-</form>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+{% load static %}
+
+<div class="buy-form-container">
+    <div class="buy-form">
+        <form method="post">
+            {% csrf_token %}
+            Станция отправления:
+            <select name="stations-from[]">
+                {% for s in stations %}
+                <option value="{{s.0}}">{{s.1}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <br>
+            Станция назначения:
+            <select name="stations-to[]">
+                {% for s in stations %}
+                <option value="{{s.0}}">{{s.1}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <br>
+            <button type="submit" name="submit" value="buy-ticket">Купить</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
