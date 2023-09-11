@@ -12,6 +12,10 @@
             <td>{{st.name}}</td>
         </tr>
         <tr>
+            <td>Работа станции</td>
+            <td><text id="emergency"></text></td>
+        </tr>
+        <tr>
             <td>Количество человек</td>
             <td><text id="people"></text>ч.</td>
         </tr>
@@ -52,6 +56,11 @@
 
                 document.getElementById('r1-pk').innerText = r1['id'];
                 document.getElementById('r1-power').innerText = r1['power'];
+                if (data['emergency']){
+                    document.getElementById('emergency').innerText = 'РАБОТАЕТ';
+                } else {
+                    document.getElementById('emergency').innerText = 'ВЫКЛЮЧЕНА';
+                }
 
             },
             error: function(response) {

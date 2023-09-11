@@ -4,11 +4,16 @@ html {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .buy-form-container {
-    font-size: 180%;
+    font-size: 2.5vw;
     display: flex;
-    height: 80%;
-    width: 90%;
+    height: 30vw;
+    width: 80vw;
 
     margin: 0;
     position: absolute;
@@ -16,7 +21,7 @@ html {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    border-radius: 30px;
+    border-radius: 1vw;
     background-color: rgb(130, 159, 255);
     box-shadow: 0px 0px 30px black;
 
@@ -25,9 +30,9 @@ html {
 }
 
 .buy-form {
-    font-size: 100%;
+    font-size: 2.5vw;
     margin: 0;
-    display: inline-flex;
+
     justify-content: center;
     align-items: center;
     margin: 10%;
@@ -35,8 +40,8 @@ html {
 }
 
 select {
-    font-size: 180%;
-    border-radius: 20px;
+    font-size: 2.5vw;
+    border-radius: 1vw;
     border: 0px solid black;
     background-color: rgb(130, 159, 255);
     margin: auto;  
@@ -53,12 +58,13 @@ select:hover {
 }
 
 button {
-    font-size: 180%;
+    font-size: 2.5vw;
     border: none;
     margin: 0 40%;
     transition: 0.3s;
     background-color: rgb(130, 159, 255);
-    border-radius: 20px;
+    border-radius: 1vw;
+    width: 20vw;
 }
 
 button:hover {
@@ -71,13 +77,13 @@ button:hover {
 
 a {
     margin: 0;
-    font-size: 180%;
+    font-size: 2.5vw;
     border: none;
     transition: 0.3s;
-    border-radius: 20px;
+    border-radius: 1vw;
     text-decoration: none;
     color: black;
-    border-radius: 20px;
+    border-radius: 1vw;
 }
 
 a:hover {
@@ -89,10 +95,10 @@ a:hover {
 
 
 .info-main-block {
-    font-size: 180%;
+    font-size: 2.5vw;
     display: flex;
-    height: 80%;
-    width: 90%;
+    height: 30vw;
+    width: 80vw;
 
     margin: 0;
     position: absolute;
@@ -100,7 +106,7 @@ a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    border-radius: 30px;
+    border-radius: 1vw;
     background-color: rgb(130, 159, 255);
     box-shadow: 0px 0px 30px black;
 
@@ -112,7 +118,7 @@ a:hover {
 
 table {
     width: 90%;
-    font-size: 160%;
+    font-size: 2.5vw;
     border: none;
     transition: 0.3s;
     background-color: rgb(130, 159, 255);

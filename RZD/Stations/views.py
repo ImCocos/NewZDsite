@@ -135,6 +135,7 @@ def data_sender(request, station_pk):
                 }
                 for r in st.recirculers.all()
         ],
+        'emergency': st.emergency,
     }
     response = {
         'data': data

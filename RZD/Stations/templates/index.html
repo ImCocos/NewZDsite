@@ -20,7 +20,9 @@
             <button type="submit" name="submit" value="show-info">Выбрать</button>
             <br>
             <br>
-            <a href="buy-ticket">Купить билет</a>
+        </form>
+        <form action="{% url "buy-ticket" %}" method="get">
+            <button type="submit">Купить билет</a>
         </form>
     </div>
 </div>
